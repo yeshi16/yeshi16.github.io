@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import DisplayArticles from '../pages/DisplayArticles';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function Articles() {
 
     const [articles, setArticles] = useState([])
-   
 
- const getArticles = async  () => {
-       
+    const getArticles = async () => {
+
         try {
-           const ApiKey = '16747fbd0fda4a9b9ced3213a66453a0'
+            const ApiKey = '16747fbd0fda4a9b9ced3213a66453a0'
             //https://newsapi.org/v2/everything?apiKey=ApiKey
             const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${ApiKey}`)
             const data = await response.json()
@@ -26,18 +27,20 @@ function Articles() {
         getArticles()
     }, [])
 
-    return (
-        <div>
-            <h1 className='title'>Article</h1>
-            
-                <div className='container'>
-                    { 
-                        articles.map( (article, i) =>( <DisplayArticles key={i} article={article} />))
-                    }
-                   
-                </div>
-            
 
+
+
+    return (
+
+        <div className='className="container mt-5'>
+
+            <div className="row">
+                {articles.map((article, i) => (
+                    <div className="col-md-4 mb-4" key={i}>
+                        <DisplayArticles article={article} />
+                    </div>
+                ))}
+            </div>
         </div>
 
     )

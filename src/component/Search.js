@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import DisplayArticles from "../pages/DisplayArticles";
+
 
 function Search() {
     const [articles, setArticles] = useState([])
@@ -10,37 +14,54 @@ function Search() {
 
     const searchArticle = async (searchWord) => {
         try {
-            if(searchWord === ""){
+            if (searchWord === "") {
                 alert('Enter search word')
                 return
             }
             const response = await fetch(`${url}?q=${searchWord}&apiKey=${ApiKey}`)
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             setArticles(data.articles)
 
         } catch (err) {
             console.log("Fetch error")
         }
     }
+
+    const clearSearch = () => {
+        setSearch('');
+        setArticles([]);
+    };
+
+
     return (
         <>
-            <div>
-                <input
-                    placeholder="Search for article"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button onClick={() => searchArticle(search)}>Search</button>
+            <div className="container mt-5">
+                <div className="input-group mb-3">
+                    <input
+                        type='text'
+                        placeholder="Search for article"
+                        value={search}
+                        className="form-control form-control-lg"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button className="btn btn-secondary" onClick={() => searchArticle(search)}>Search</button>
+                </div>
+
+                <div className="container">
+                    {articles.map((article, i) => (
+                        <DisplayArticles key={i} article={article} />
+                    ))}
+
+                </div>
+
+
+                {articles.length > 0 && (
+                    <Link to='/' onClick={clearSearch}>
+                        <h1>Go to Top Headlines</h1>
+                    </Link>
+                )}
             </div>
-
-            <div className="container">
-                {articles.map((article, i) => (
-                    <DisplayArticles key={i} article={article} />
-                ))}
-
-            </div>
-
         </>
     )
 }

@@ -1,15 +1,19 @@
 
 import React from "react";
-import Articles from "./component/Articles";
-import Search from "./component/Search";
+import {Route, Routes} from 'react-router-dom'
 
+import Main from './component/Main'
 
 function App() {
   return (
+   
     <div className="App">
-      <Search />
-      <Articles />
+    
+      <Routes>
+        <Route path='/' element={<Main/>} />
+      </Routes>
     </div>
+   
   );
 }
 
