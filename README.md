@@ -13,6 +13,14 @@ Users can interact with the application through various features such as searchi
 
 React, bootstrap and NewsApi
 
+## Unsolved problems
+During the deployment process i encountered an issue with Netlify.
+Tried to drag and drop method and aslo using github. Below shows the links. 
+ 
+https://newsarticlesandsearchtopics.netlify.app
+
+https://lucent-cassata-5f7faa.netlify.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
