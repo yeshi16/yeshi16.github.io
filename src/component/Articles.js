@@ -32,7 +32,7 @@ function Articles() {
 
     return (
 
-        <div className='className="container mt-5'>
+        <div className='container mt-5'>
 
             <div className="row">
                 {articles.map((article, i) => (

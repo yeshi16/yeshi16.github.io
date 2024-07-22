@@ -31,6 +31,7 @@ function Search() {
     const clearSearch = () => {
         setSearch('');
         setArticles([]);
+        window.scrollTo(0,0)
     };
 
 
@@ -48,11 +49,16 @@ function Search() {
                     <button className="btn btn-secondary" onClick={() => searchArticle(search)}>Search</button>
                 </div>
 
-                <div className="container">
-                    {articles.map((article, i) => (
-                        <DisplayArticles key={i} article={article} />
-                    ))}
 
+                <div className='className="container mt-5'>
+
+                    <div className="row">
+                        {articles.map((article, i) => (
+                            <div className="col-md-4 mb-4" key={i}>
+                                <DisplayArticles article={article} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
 

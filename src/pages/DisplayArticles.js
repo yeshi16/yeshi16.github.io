@@ -6,11 +6,11 @@ function DisplayArticles({ article }) {
     const placeholderStyle = {
         width: '100%',
         height: '180px',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: 'Lightgray',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#333'
+        color: 'black'
     };
 
     return (
@@ -23,7 +23,7 @@ function DisplayArticles({ article }) {
         //     <hr />
         // </div>
         
-        <div className="card" style={{width: 18 + 'rem'}}>
+        <div className="card" style={{width: 25 + 'rem'}}>
             {article.urlToImage ? (
                 <img src={article.urlToImage} className="card-img-top" alt="img" />
             ) : (
@@ -35,7 +35,7 @@ function DisplayArticles({ article }) {
             <div className="card-body">
                 <h5 className="card-title">{article.title}</h5>
                 <p className="card-text">{article.description}</p>
-                <a href={article.url} className="btn btn-primary">Go to {article.source.name}</a>
+                <a href={article.url} className="btn btn-primary">Go to {article.author}</a>
             </div>
         </div>
     )
