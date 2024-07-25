@@ -9,16 +9,18 @@ function Search() {
     const [articles, setArticles] = useState([])
     const [search, setSearch] = useState('')
 
-    const ApiKey = '16747fbd0fda4a9b9ced3213a66453a0'
-    const url = 'https://newsapi.org/v2/everything'
+    
 
     const searchArticle = async (searchWord) => {
         try {
+            const apiKey = process.env.REACT_APP_API_KEY;
+            const url = 'https://newsapi.org/v2/everything'
+
             if (searchWord === "") {
                 alert('Enter search word')
                 return
             }
-            const response = await fetch(`${url}?q=${searchWord}&apiKey=${ApiKey}`)
+            const response = await fetch(`${url}?q=${searchWord}&apiKey=${apiKey}`)
             const data = await response.json()
             // console.log(data)
             setArticles(data.articles)
@@ -27,6 +29,8 @@ function Search() {
             console.log("Fetch error")
         }
     }
+
+    
 
     const clearSearch = () => {
         setSearch('');
